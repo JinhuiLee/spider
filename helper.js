@@ -4,7 +4,7 @@ var fs = require("fs")
 var trim = require("trim")
 var md5 = require("md5")
 
-
+//保存内容
 function saveContent(path, content) {
     fs.appendFile(path, content, function(err) {
         if (err) {
@@ -13,12 +13,11 @@ function saveContent(path, content) {
     });
 }
 
-
+//读取数据，反序列化
 function readData(path) {
     fs.appendFile(path, (err, data) => {
         if (err) console.log(err);
         var data = JSON.parse(data);
-        //console.log(data);
         iterate_data(data);
         return data;
     });
@@ -26,40 +25,40 @@ function readData(path) {
 
 
 
-
+//获取新闻内容
 var getContent = function(html, filename) {
     var $ = cheerio.load(html);
     var ps = $("div.article-content");
     content = ""
+    //按<p>查找
     ps.find("p").each(function(index, item) {
         content += $(item).not("[style]").text();
         content += "\r\n";
     });
-    //console.log(content);
+    //按<td>查找
     if (content.length < 10) {
         ps.find("td").each(function(index, item) {
             content += $(item).not("[style]").text();
             content += "\r\n";
         });
     }
-
+    //直接输出 $("div.article-content").text()
     if (content.length < 10) {
-
         content = ps.text();
-
     }
+    //保存新闻内容
     saveContent(filename, content);
 
 };
 
-
+//获取供稿单位
 var getProvider = function(html, news_item) {
     var $ = cheerio.load(html);
     return $("a[title=供稿]").text().trim();
 };
 
 
-
+//获取图片
 var getPics = function(url, news, news_item) {
     http.get(encodeURI(url), function(res) {
         res.setEncoding("utf-8");
@@ -74,26 +73,32 @@ var getPics = function(url, news, news_item) {
             news_item.pics = pics;
             news_item.provider = getProvider(html);
             ps.find("img").each(function(index, item) {
-                //console.log("Image");
-                //console.log("http://www.ss.pku.edu.cn"+$(item).attr("src"));
-                var candidate1, candidate2;
-                text0 = $(item).text().trim();
-                text1 = $(item).parent().parent().next().not("ul").text().trim();
-                text2 = $(item).parent().next().not("ul").text().trim();
-                var candidate = ""
 
-                if (text0.length < 35 && text0 != "") {
-                    candidate = text1;
-                } else if (text1.length < 35 && text1 != "") {
-                    candidate = text1;
-                } else if (text2.length < 35 && text2 != "") {
-                    candidate = text2;
-                } else {
-                    candidate = "No title"
+                text = []
+                //直接获取
+                text.push($(item).text().trim());
+                //父节点的文字
+                text.push($(item).parent().not("ul").text().trim());
+                //父节点的下一个节点文字
+                text.push($(item).parent().next().not("ul").text().trim());
+                //祖父节点的下一个节点文字
+                text.push($(item).parent().parent().next().not("ul").text().trim());
+                //曾祖父节点的下一个节点文字
+                text.push($(item).parent().parent().parent().next().not("ul").text().trim());
+
+                //作为图片title的门槛
+                var candidate = "NO TITLE"
+                var threshold = 40;
+                for (var i in text)
+                {
+                    if (text[i].length < threshold && text[i]!= "")
+                    {
+                      candidate=text[i];
+                      break;
+                    }
                 }
 
-
-
+                //当前图片对象，由link和title描述
                 obj = {
                     link: "",
                     title: ""
@@ -102,24 +107,27 @@ var getPics = function(url, news, news_item) {
                 obj.link = 'http://www.ss.pku.edu.cn' + $(item).attr("src");
                 pics.push(obj);
             });
-
+            //md5生成独特的文件名存储新闻内容
             var filename = md5(encodeURI(url));
-            news_item.content = "./content/" + filename + ".txt";
+            news_item.content = "./data/content/" + filename + ".txt";
             news.push(news_item);
-            //console.log(news);
+
             getContent(html, news_item.content);
         });
     }).on("error", function(err) {
         console.log(err);
     });
 };
-
+//************单元测试**************
+//*********************************
 var news = [];
 var news_item;
 news_item = {
     pics: []
 }
-getPics("http://www.ss.pku.edu.cn/index.php/newscenter/news/2373-%E5%BC%95%E9%A2%86%E5%8F%98%E9%9D%A9%E6%97%B6%E4%BB%A3-%E8%81%9A%E7%84%A6%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A62016%E8%BD%AF%E5%BE%AE%E5%88%9B%E6%96%B0%E5%88%9B%E4%B8%9A%E6%96%B0%E5%B9%B4%E8%AE%BA%E5%9D%9B", news, news_item);
+getPics("http://www.ss.pku.edu.cn/index.php/newscenter/news/2373", news, news_item);
+//*********************************
+//************单元测试**************
 
 
 

@@ -3,10 +3,10 @@
  <!--
  var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
  var path = 'hr' + 'ef' + '=';
- var addy74528 = 'byw&#97;ng' + '&#64;';
- addy74528 = addy74528 + 'ss' + '&#46;' + 'pk&#117;' + '&#46;' + '&#101;d&#117;' + '&#46;' + 'cn';
- document.write('<a ' + path + '\'' + prefix + ':' + addy74528 + '\'>');
- document.write(addy74528);
+ var addy49572 = 'byw&#97;ng' + '&#64;';
+ addy49572 = addy49572 + 'ss' + '&#46;' + 'pk&#117;' + '&#46;' + '&#101;d&#117;' + '&#46;' + 'cn';
+ document.write('<a ' + path + '\'' + prefix + ':' + addy49572 + '\'>');
+ document.write(addy49572);
  document.write('<\/a>');
  //-->\n 
  <!--

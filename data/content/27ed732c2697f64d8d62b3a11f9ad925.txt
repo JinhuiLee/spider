@@ -54,10 +54,10 @@
  <!--
  var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
  var path = 'hr' + 'ef' + '=';
- var addy2096 = 'zh&#97;&#111;sh&#101;ng' + '&#64;';
- addy2096 = addy2096 + 'ss' + '&#46;' + 'pk&#117;' + '&#46;' + '&#101;d&#117;' + '&#46;' + 'cn';
- document.write('<a ' + path + '\'' + prefix + ':' + addy2096 + '\'>');
- document.write(addy2096);
+ var addy27942 = 'zh&#97;&#111;sh&#101;ng' + '&#64;';
+ addy27942 = addy27942 + 'ss' + '&#46;' + 'pk&#117;' + '&#46;' + '&#101;d&#117;' + '&#46;' + 'cn';
+ document.write('<a ' + path + '\'' + prefix + ':' + addy27942 + '\'>');
+ document.write(addy27942);
  document.write('<\/a>');
  //-->\n 
  <!--

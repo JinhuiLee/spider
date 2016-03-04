@@ -52,11 +52,11 @@
  <!--
  var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
  var path = 'hr' + 'ef' + '=';
- var addy87356 = 'zh&#97;&#111;sh&#101;ng' + '&#64;';
- addy87356 = addy87356 + 'ss' + '&#46;' + 'pk&#117;' + '&#46;' + '&#101;d&#117;' + '&#46;' + 'cn';
- var addy_text87356 = 'zh&#97;&#111;sh&#101;ng' + '&#64;' + 'ss' + '&#46;' + 'pk&#117;' + '&#46;' + '&#101;d&#117;' + '&#46;' + 'cn';
- document.write('<a ' + path + '\'' + prefix + ':' + addy87356 + '\'>');
- document.write(addy_text87356);
+ var addy94098 = 'zh&#97;&#111;sh&#101;ng' + '&#64;';
+ addy94098 = addy94098 + 'ss' + '&#46;' + 'pk&#117;' + '&#46;' + '&#101;d&#117;' + '&#46;' + 'cn';
+ var addy_text94098 = 'zh&#97;&#111;sh&#101;ng' + '&#64;' + 'ss' + '&#46;' + 'pk&#117;' + '&#46;' + '&#101;d&#117;' + '&#46;' + 'cn';
+ document.write('<a ' + path + '\'' + prefix + ':' + addy94098 + '\'>');
+ document.write(addy_text94098);
  document.write('<\/a>');
  //-->\n 
  <!--
