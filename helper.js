@@ -3,7 +3,7 @@ var cheerio = require("cheerio")
 var fs = require("fs")
 var trim = require("trim")
 var md5 = require("md5")
-
+var sanitize = require('validator').sanitize
 //保存内容
 function saveContent(path, content) {
     fs.appendFile(path, content, function(err) {
@@ -24,27 +24,52 @@ function readData(path) {
 };
 
 
+var filter = function(before)
+{
+    var after=before;
+    after = after.replace(/<br>/g, "\r\n  ");
+    after = after.replace(/[&nbsp]+;/g, " ");
+    after = after.replace(/&[\w]+;/g, "");
+    after = after.replace(/<[^>]+>/g,"");
+    return after;
+}
+
 
 //获取新闻内容
 var getContent = function(html, filename) {
-    var $ = cheerio.load(html);
+    var $ = cheerio.load(html,{decodeEntities: false});
     var ps = $("div.article-content");
     content = ""
     //按<p>查找
+    var threshold = 40;
     ps.find("p").each(function(index, item) {
-        content += $(item).not("[style]").text();
-        content += "\r\n";
+        if (ps.text().length>threshold)
+        {
+          before = $(item).not("[style]").html();
+          if (before)
+          {
+            var after = filter(before);
+            content += after + "\r\n  ";
+          }
+        }
     });
     //按<td>查找
     if (content.length < 10) {
         ps.find("td").each(function(index, item) {
-            content += $(item).not("[style]").text();
-            content += "\r\n";
+          if (ps.text().length>threshold)
+          {
+            before = $(item).not("[style]").html();
+            if (before)
+            {
+              var after = filter(before);
+              content += after + "\r\n  ";
+            }
+          }
         });
     }
     //直接输出 $("div.article-content").text()
     if (content.length < 10) {
-        content = ps.text();
+        content = filter(ps.html());
     }
     //保存新闻内容
     saveContent(filename, content);
@@ -86,8 +111,8 @@ var getPics = function(url, news, news_item) {
                 //曾祖父节点的下一个节点文字
                 text.push($(item).parent().parent().parent().next().not("ul").text().trim());
 
-                //作为图片title的门槛
                 var candidate = "NO TITLE"
+                //作为图片title的字数门槛
                 var threshold = 40;
                 for (var i in text)
                 {
@@ -97,6 +122,7 @@ var getPics = function(url, news, news_item) {
                       break;
                     }
                 }
+
 
                 //当前图片对象，由link和title描述
                 obj = {

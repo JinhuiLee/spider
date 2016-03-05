@@ -1,19 +1,19 @@
- 
- ICICS 2010 
-Twelfth
+ 
+   ICICS 2010 
+  Twelfth
   International Conference on Information and Communications Security 
-Barcelona December 15-17, 2010 
- 
-CALL FOR PAPERS
-(截稿日期：2010年7月15日) 
- 
- Conference Topics
-Original
+  Barcelona December 15-17, 2010 
+   
+  CALL FOR PAPERS
+  (截稿日期：2010年7月15日) 
+   
+   Conference Topics
+  Original
 papers on all aspects of Information and Communications Security are solicited
 for submission to ICICS 2010. This international conference will be the 12th
 event in the ICICS series, started in 1997, which will bring together
 individuals involved in multiple disciplines to foster exchange of ideas. 
-Topics of
+  Topics of
 interest include, but are not limited to, access control, anonymity and
 privacy, applied cryptography, biometric security, data and system integrity,
 fraud control, information hiding, intrusion detection, key management and
@@ -22,14 +22,14 @@ security certification. Security applications of interest comprise, among
 others, computer networks, databases, distributed systems and grid computing,
 e-commerce, e-voting, intellectual property, mobile computing, and software
 protection.
- 
- Instructions for Authors
-Authors
+   
+   Instructions for Authors
+  Authors
 are invited to submit original papers not previously published nor submitted in
 parallel for publication to any other conference, workshop or journal. All
 submitted papers must be anonymous, with no author names, affiliations,
 acknowledgements, or obvious references. 
-Submissions
+  Submissions
 should be in English, as a PDF or PS file with all fonts embedded, in the
 Springer-Verlag LNCS format, typeset with 11pt font, and using reasonable spacing and margins.
 Papers should not exceed 12 A4-sized
@@ -38,28 +38,29 @@ that papers should be intelligible without all appendices, since committee
 members are not required to read them. Submitted papers may risk being rejected
 directly without consideration of their merits if they do not follow all the
 above submission instructions.
- 
- 
- Important Dates
-Paper submission deadline July 15, 2010
-Notification of acceptance  September 20, 2010
-Camera-ready due October 5, 2010
-Conference  December 15-17, 2010
- 
- Conference Committee
-Complete List
-http://www.icics2010.org/committee
-Program Co-Chairs
-Sihan Qing
-Peking
+   
+   
+   Important Dates
+  Paper submission deadline July 15, 2010
+  Notification of acceptance  September 20, 2010
+  Camera-ready due October 5, 2010
+  Conference  December 15-17, 2010
+   
+   Conference Committee
+  Complete List
+  http://www.icics2010.org/committee
+  Program Co-Chairs
+  Sihan Qing
+  Peking
   University China
-Miguel Soriano
-Universitat Politècnica de Catalunya Spain
-General Chair
-Javier López
-University
+  Miguel Soriano
+  Universitat Politècnica de Catalunya Spain
+  General Chair
+  Javier López
+  University
   of Málaga Spain
- 
- Additional Information
-WWW: www.icics2010.org
-eMail: 
+   
+   Additional Information
+  WWW: www.icics2010.org
+  eMail: 
+  
